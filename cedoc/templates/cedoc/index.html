@@ -1,0 +1,53 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+    {% include 'navbar.html' %}
+
+    <section class="mt-5 pt-5" id="conteudo">
+        <div class="container">
+            <form class="d-flex mt-3" role="search" method="get">
+              <input class="form-control me-2" type="search" placeholder="Pesquisar" name="q" value="{{ query }}">
+              <button class="btn btn-outline-secondary" type="submit">Pesquisar</button>
+            </form>
+        </div>
+        <div class="container mt-5">
+            <div class="row justify-content-around g-3">
+                {% for pintura in pinturas_amostra %}
+                    <div class="col-md-2">
+                        <div style="height: 150px; width: 150px" class="text-center mx-auto"><a href="{% url 'details' pintura.id %}">
+                            <img src="{{ pintura.imagem.url }}" alt=""
+                            style="width: 100%;height: auto;max-width: 150px;max-height: 150px;object-fit: cover;"></a></div>
+                        <div class="mx-auto">
+                            <p class="mb-0 mt-2"><b>Titulo:</b> {{ pintura.titulo_da_obra }}</p>
+                            <p class="mb-0"><b>Autor:</b> {{ pintura.autor }}</p>
+                            <p class="mb-0"><b>Data: </b>{{ pintura.data_de_criacao }}</p>
+                            <p class="mb-0"><b>Assinado: </b>{{ pintura.assinado }}</p>
+                        </div>
+                     </div>
+                {% endfor %}
+
+                {% if pinturas %}
+                    <p>Resultados da pesquisa:</p>
+                     <br>
+                    {% for pintura in pinturas %}
+                        <div class="col-md-2">
+                            <div style="height: 150px; width: 150px" class="text-center"><a href="{% url 'details' pintura.id %}"><img src="{{ pintura.imagem.url }}" alt="" style="height: 100%"></a></div>
+                            <p class="mb-0 mt-2"><b>Titulo:</b> {{ pintura.titulo_da_obra }}</p>
+                            <p class="mb-0"><b>Autor:</b> {{ pintura.autor }}</p>
+                            <p class="mb-0"><b>Data: </b>{{ pintura.data_de_criacao }}</p>
+                            <p class="mb-0"><b>Assinado: </b>{{ pintura.assinado }}</p>
+                         </div>
+                    {% endfor %}
+                {% endif %}
+
+                {% if query and not pinturas %}
+                    <p>Nenhum resultado encontrado.</p>
+                {% endif %}
+            </div>
+        </div>
+
+
+    </section>
+
+{% endblock %}

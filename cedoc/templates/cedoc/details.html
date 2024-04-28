@@ -1,0 +1,32 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+    <section>
+    <a href="javascript:history.go(-1)" class="btn m-3 btn-secondary"><i class="ri-arrow-left-line"></i></a>
+        <div class="container">
+            <div class="row">
+                <div class="col-9 text-center align-items-center" id="content-left">
+                    <img src="{{ pintura.imagem.url }}" alt="{{ pintura.titulo_da_obra }}" height="550">
+                </div>
+                <div class="col" id="content-right">
+                    <h3 class="fw-bold mb-3 text-uppercase">Galeria Museu Hloyasi.</h3>
+                    <p class="mb-2"><b>Título: </b>{{ pintura.titulo_da_obra }}</p>
+                    <p class="mb-2"><b>Autor: </b>{{ pintura.autor }}</p>
+                    <p class="mb-2"><b>Data: </b>{{ pintura.data_de_criacao }}</p>
+                    <p class="mb-2"><b>Assinado: </b>{{ pintura.assinado }}</p>
+                    <p class="mb-2"><b>Dimensões: </b>{{ pintura.dimensoes }}</p>
+                    <p class="mb-2"><b>Técnica: </b>{{ pintura.tecnica }}</p>
+                    <p class="mb-2"><b>Suporte: </b>{{ pintura.suporte }}</p>
+                    <p class="mb-2"><b>Observações: </b>{{ pintura.obs }}</p>
+                    <p class="mb-2"><b>Localização: </b>{{ pintura.localizacao_atual }}</p>
+                    <p class="mb-2"><b>Proprietário: </b>{{ pintura.proprietario }}</p>
+                    <p class="mb-2"><b>Estado de conservação: </b>{{ pintura.estado_de_conservacao }}</p>
+                    <p class="mb-2"><b>Direitos: </b>{{ pintura.direitos }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}
